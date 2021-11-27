@@ -1,0 +1,120 @@
+<%- include("../partials/header") %> 
+<%- include("../partials/navbar") %> 
+
+
+<div class="container mt-3">
+    
+<h1>This is mechanic dashboard.</h1>
+
+<!-- toggle Availability -->
+<h3>
+<div class="form-check form-switch mb-3">
+  <form action="/status" method="POST">
+    
+    <input class="form-check-input" id="check" type="checkbox" name="status" <%=currentUser.status%>  onchange="submit()"/>
+    <!-- <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" name="status" data-toggle="toggle" checked onchange="beforeSubmit()"/> -->
+    <label class="form-check-label" for="flexSwitchCheckChecked">Availability</label>
+  </form>
+</div>
+</h3>
+
+<!-- shows service/booking requested from user -->
+<div class="card p-3 ">
+  <%- include("../partials/flash") %> 
+    <div class="card-body">
+        <h3>ServiceBook</h3>
+        <p class="card-text"><small class="text-muted">Booking Request Appears Here</small></p>
+    </div>
+    
+    <% for(let list of data.bookings) {%> 
+      <!-- if status is cancelled -->
+      <% if(list.status == 'cancelled'){ %>
+        <div class="card bg-secondary text-lighter mb-2" >
+          <div class="card-header">
+            <% if(list.status == 'pending'){ %>
+              <p class="text-danger h5"><b><%=list.user_name%> wants to book you</b></p>
+            <% }else{ %>
+              <p class="h5">
+                <b>Booking Cancelled</b>
+                <a href="/mechanic/booking/<%=list._id%>/remove" 
+                  class="text-white" style="float:right;">Delete</a>
+              </p>
+  
+            <% } %>   
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">Service Requested By: <%=list.user_name %></h5>
+            <p class="card-text">UserId: <%=list.user_id %> </p>
+            <p class="card-text">Address : <%=list.location %></p>
+            <p class="card-text">Booked On : <%=list.bookedOn %></p>
+            <a style="pointer-events: none;">Show in Map</a>
+            <br><br>  
+            <% if(list.status == 'pending'){%>
+              <a href="/mechanic/booking/<%=list.ref_id%>/accept" class="btn btn-success">Accept</a>
+              <a href="/mechanic/booking/<%=list._id%>/cancel" class="btn btn-danger">Cancel</a>
+              <% }else{%>
+              <a class="text-dark h4" style="pointer-events: none;">Cancelled</a>
+  
+            <% } %>   
+          </div>
+      </div>
+      <% }else{ %>   
+
+      <!-- this is real one -->
+    <div class="card" >
+        <div class="card-header">
+          <% if(list.status == 'pending'){ %>
+            <p class="text-danger h5"><b><%=list.user_name%> wants to book you</b></p>
+          <% }else{ %>
+            <p class="text-success h5">
+              <b>You've Accepted this Request</b>
+              <a href="/mechanic/booking/<%=list._id%>/remove" 
+                class="text-danger" style="float:right;">Delete</a>
+            </p>
+
+          <% } %>   
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">Service Requested By: <%=list.user_name %></h5>
+          <p class="card-text">UserId: <%=list.user_id %> </p>
+          <p class="card-text">Address : <%=list.location %></p>
+          <p class="card-text">Booked On : <%=list.bookedOn %></p>
+          <a href="https://www.google.com/maps/search/<%=list.latitude %>,<%=list.longitude %>/@<%=list.latitude %>,<%=list.longitude %>,17z"
+             target="_blank">Show in Map</a>
+          <br><br>  
+          <% if(list.status == 'pending'){%>
+            <a href="/mechanic/booking/<%=list.ref_id%>/accept" class="btn btn-success">Accept</a>
+            <a href="/mechanic/booking/<%=list._id%>/cancel" class="btn btn-danger">Cancel</a>
+            <% }else{%>
+            <a class="btn" style="background:#A4D1A2; pointer-events: none;">Accepted</a>
+
+          <% } %>   
+        </div>
+      </div>
+    <% } %> 
+    <% } %>
+    <!-- <%=data.bookings %>  -->
+</div>
+
+
+</div>
+
+<script>
+  
+  // function beforeSubmit(){
+  //     var toggle = document.getElementById("check").checked;
+  //     console.log(toggle);
+  // }
+  // var toggle = document.getElementById("flexSwitchCheckChecked").value;
+  // alert(toggle)
+  // function status(){
+
+  // }
+  // if(!(toggle).checked){
+  //   // toggle.type="submit"
+  // onclick="showChkState()
+  //   document.getElementById("sub").type="submit"
+  // }
+</script>
+
+<%- include("../partials/footer") %> 

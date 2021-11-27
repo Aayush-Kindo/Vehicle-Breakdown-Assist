@@ -1,0 +1,73 @@
+<%- include("../partials/header") %> 
+<%- include("../partials/navbar") %> 
+
+
+
+<div class="container">
+    
+    <div class="card p-3 mt-3 mb-3">
+        <%- include("../partials/flash") %> 
+        <div class="card-body">
+            <h3>My Bookings</h3>
+            <p class="card-text"><small class="text-muted">Your Booking Appears Here</small></p>
+        </div>
+
+        <% for(let list of data.bookings) {%> 
+        <!-- if status is cancelled -->
+        <% if(list.status == 'cancelled'){ %>
+          <div class="card bg-secondary text-lighter mb-2">
+            <div class="card-header">
+                <p class="h5">
+                  <b>Booking Cancelled</b>
+                  <a href="/user/booking/<%=list._id%>/remove" 
+                    class="text-white" style="float:right;">delete</a>
+                </p>      
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">You requested Service From: <%=list.mechanic_name %></h5>
+              <p class="card-text">MechanicId: <%=list.mechanic_id %> </p>
+              <p class="card-text">Address : <%=list.location %></p>
+              <p class="card-text">Booked On : <%=list.bookedOn %></p>
+              <a class="text-dark h4" style="pointer-events: none;">Cancelled</a>
+              <!-- <a href="/booking/<%=list._id%>/cancel" class="btn btn-primary">Cancel</a> -->
+            </div>
+          </div>
+        <% }else{ %>   
+
+        <!-- this is real one -->
+        <div class="card mb-2">
+            <div class="card-header text-danger">
+              <% status=list.status %> 
+              <% if(status == 'pending'){%>
+                <p class="text-danger h5"><b>Booking Pending</b></p>
+              <% }else if(status == 'accepted'){ %>
+                <p class="text-success h5">
+                  <b>Booking Confirmed</b>
+                  <a href="/user/booking/<%=list._id%>/remove" 
+                    class="text-danger" style="float:right;">delete</a>
+                </p>
+              <% }else if(status == 'cancelled'){ %>
+                <p class="text-danger h5">
+                  <b>Booking Cancelled</b>
+                  <a href="/user/booking/<%=list._id%>/remove" 
+                    class="text-danger" style="float:right;">delete</a>
+              <% } %>   
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">You requested Service From: <%=list.mechanic_name %></h5>
+              <p class="card-text">MechanicId: <%=list.mechanic_id %> </p>
+              <p class="card-text">Address : <%=list.location %></p>
+              <p class="card-text">Booked On : <%=list.bookedOn %></p>
+              <a href="/user/booking/<%=list.ref_id %>/cancel" class="btn btn-primary">Cancel</a>
+              <!-- <a href="/booking/<%=list._id%>/cancel" class="btn btn-primary">Cancel</a> -->
+            </div>
+          </div>
+        <% } %> 
+        <% } %> 
+    </div>
+    
+    
+    </div>
+
+
+<%- include("../partials/footer") %> 

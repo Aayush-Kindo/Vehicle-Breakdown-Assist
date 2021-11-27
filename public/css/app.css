@@ -1,0 +1,63 @@
+/* mechanic search displayed in card that one */
+.cart .card img{
+    padding: 8px;
+    height: 110px;
+}
+
+/* set height to 100% */
+body,html{
+    height: 100%;
+}
+
+/* background image for landing page */
+.bg{
+/*     background-image: url('https://images.pexels.com/photos/2680270/pexels-photo-2680270.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500') ; */
+    /* Full height */
+    background-image: url('https://mascarrecovery.com/wp-content/uploads/2019/08/roadside_assistance.jpg');
+    height: 100%;
+    /* 1366px * 225px screen size */
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+/* login screen breakpoints for making it responsive */
+@media (max-width: 1399.98px) {
+    .login{
+        padding: 20px;
+        width: 50%;
+    }
+}
+@media (max-width: 575.98px) {
+    .login{
+        padding: 0px;
+        width: auto;
+    }
+}
+
+/* registration screen breakpoints for making it responsive */
+@media (max-width: 1399.98px) {
+    .register{
+        padding: 20px;
+        width: 75%;
+    }
+}
+@media (max-width: 575.98px) {
+    .register{
+        padding: 0px;
+        width: auto;
+    }
+}
+
+/* .bglogin{
+    background-image: url('https://images.pexels.com/photos/1242348/pexels-photo-1242348.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500') ;
+ 
+    height: 100%;
+
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+} */
+/* @media only screen and (min-device-width: 1000px) {
+   
+} */

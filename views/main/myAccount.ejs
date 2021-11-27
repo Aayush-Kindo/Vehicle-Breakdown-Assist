@@ -1,0 +1,70 @@
+<%- include("../partials/header") %> 
+<%- include("../partials/navbar") %> 
+
+
+<div class="container">
+
+    <div class="card p-3 mt-3 mb-3">        
+        <div class="card-body">
+            <h1 class="display-1 text-uppercase"><%=currentUser.username %></h1>
+            <br>
+            <h3>+9099089999</h3>
+            <h3 class="text-primary"><%=currentUser.email %></h3>
+        </div>
+    </div>  
+    <!-- <div class="mt-2 mb-3">
+        <label for="Name" class="form-label">Email</label>
+        <input type="text" class="form-control" value="<%=currentUser.email %> " readonly>
+    </div>   -->
+
+    <!-- <div class="card mb-3" >
+        <div class="row g-0">
+          <div class="col-md-4">
+            <img src="" alt="...">
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h5 class="card-title"></h5>
+              <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+            </div>
+          </div>
+        </div>
+      </div> -->
+      <!-- address -->
+      <div class="card mb-3">
+        <div class="card-body">
+          <h4>
+              My Address
+             <a href="#" style="float: right;color: grey;"><i class="fas fa-edit ml-2"></i></a>
+          </h4>
+          
+          This is some text within a card body.
+        </div>
+      </div>
+      <!-- reviews -->
+      <div class="card mb-2">
+        <div class="card-body">
+          <h4>
+              My Reviews
+             <a href="#" style="float: right;color: grey;"><i class="fas fa-edit ml-2"></i></a>
+          </h4>
+          
+          This is some text within a card body.
+        </div>
+      </div>
+      <!-- delete -->
+      <a href="#">Deactivate Account</a>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+<%- include("../partials/footer") %> 

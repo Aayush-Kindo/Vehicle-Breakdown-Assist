@@ -1,0 +1,66 @@
+<%- include("../partials/header") %> 
+<!-- navbar -->
+<%- include("../partials/mainNavbar.ejs") %> 
+
+<div class="container m-auto p-3">
+    
+    <!-- register inside form class is for making responsive for desktop and mobile -->
+
+    <form action="/user/register" method="POST" 
+          class="m-auto bg-white register"
+          style="box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;">
+      <%- include("../partials/flash") %>
+      <div class="border border-gray p-3" style="background-color:#F0F0F0;">
+        <h4 class="display-4">Rider Registration</h4>
+      </div>
+      <div class="border border-gray p-5 m-auto">
+        <div class="row mt-5 mb-3">
+            <label for="email" class="col-sm-2 col-form-label">Email</label>
+            <div class="col-sm-10">
+              <input type="email" class="form-control" name="email" id="email" placeholder="Enter email" required>
+            </div>
+        </div>
+        <div class="row mb-3">
+          <label for="name" class="col-sm-2 col-form-label">Name</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" name="username" id="username" placeholder="Enter username" required>
+          </div>
+        </div>
+        <div class="row mb-3">
+          <label for="password" class="col-sm-2 col-form-label">User type</label>
+          <div class="col-sm-10">
+            <select class="form-select" name="usertype" id="usertype" required>
+              <!-- <option selected>Select User Type...</option> -->
+              <option selected value="user">User</option>
+              <option value="mechanic">Mechanic</option>
+            </select>
+          </div>
+        </div>
+        <div class="row mb-3">
+          <label for="password" class="col-sm-2 col-form-label">Phone No:</label>
+          <div class="col-sm-10">
+            <input type="number" class="form-control" name="phoneno" id="phoneno" placeholder="Enter Phone Number" required>
+          </div>
+        </div>
+        <div class="row mb-5">
+          <label for="password" class="col-sm-2 col-form-label">Password</label>
+          <div class="col-sm-10">
+            <input type="password" class="form-control" name="password" id="password" placeholder="Enter password" required>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-danger">Register</button>
+        <br><br>
+        Already Have an Account?
+        <a href="/user/login" class="text-primary">Login</a>
+      </div>
+    </form>
+
+</div>
+
+
+
+
+
+
+
+<%- include("../partials/footer") %> 
